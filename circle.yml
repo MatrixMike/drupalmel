@@ -6,7 +6,7 @@ machine:
     DRUPALMEL_PROFILE_PATH: $HOME/drupalmel
     DRUPALMEL_MAKEFILE: $HOME/drupalmel/circle.make
     DRUPALMEL_BUILD_PATH: $HOME/drupalmel_build
-    DRUPALMEL_DB_URL: mysql://ubuntu:127.0.0.1:3306/circle_test
+    DRUPALMEL_DB_URL: mysql://ubuntu@127.0.0.1:3306/circle_test
 
 dependencies:
   override:
