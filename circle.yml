@@ -16,6 +16,6 @@ dependencies:
 
 database:
   override:
-    - drush --root=$DRUPALMEL_BUILD_PATH si $DRUPALMEL_PROFILE_NAME --db-url=$DRUPALMEL_DB_URL
+    - drush --root=$DRUPALMEL_BUILD_PATH si $DRUPALMEL_PROFILE_NAME --db-url=$DRUPALMEL_DB_URL -y
 
 
