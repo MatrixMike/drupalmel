@@ -1,4 +1,16 @@
 machine:
   php:
     version: 5.6.14
+  environment:
+    DRUPALMEL_PROFILE_NAME: drupalmel
+    DRUPALMEL_PROFILE_PATH: $HOME/drupalmel
+    DRUPALMEL_MAKEFILE: $HOME/drupalmel/stub.make
+    DRUPALMEL_BUILD_PATH: $HOME/drupalmel_build
+
+dependencies:
+  override:
+    - composer global require drush/drush:8.*
+    - cd $(dirname $DRUPALMEL_MAKEFILE) && drush make $DRUPALMEL_MAKEFILE $DRUPALMEL_BUILD_PATH
+    - rm -r $DRUPALMEL_BUILD_PATH/profiles/$DRUPALMEL_PROFILE_NAME
+    - ln -s $DRUPALMEL_PROFILE_PATH $DRUPALMEL_BUILD_PATH/profiles/$DRUPALMEL_PROFILE_NAME
 
