@@ -9,6 +9,18 @@ machine:
     DRUPALMEL_DB_URL: mysql://ubuntu@127.0.0.1:3306/circle_test
 
 dependencies:
+  pre:
+    - sudo composer self-update
+    - composer install --prefer-dist
+
+    # get selenium rocking!
+    - wget http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.1.jar
+    - 'java -jar selenium-server-standalone-2.47.1.jar > /dev/null 2>&1':
+          background: true
+
+    # start the web server
+    - 'php app/console server:run --env=test -vvv localhost:8080 > server.log 2>&1':
+          background: true
   override:
     - composer global require drush/drush:8.*
     - cd $(dirname $DRUPALMEL_MAKEFILE) && drush make $DRUPALMEL_MAKEFILE $DRUPALMEL_BUILD_PATH
@@ -18,4 +30,7 @@ database:
   override:
     - drush --root=$DRUPALMEL_BUILD_PATH si $DRUPALMEL_PROFILE_NAME --db-url=$DRUPALMEL_DB_URL -y
 
+test:
+  override:
+    - php vendor/bin/behat
 
