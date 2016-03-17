@@ -27,7 +27,7 @@ dependencies:
 
 database:
   override:
-    - drush --root=$DRUPALMEL_BUILD_PATH si $DRUPALMEL_PROFILE_NAME install_configure_form.update_status_module='array(FALSE,FALSE)' --db-url=$DRUPALMEL_DB_URL -y
+    - drush --root=$DRUPALMEL_BUILD_PATH site-install $DRUPALMEL_PROFILE_NAME install_configure_form.update_status_module='array(FALSE,FALSE)' --db-url=$DRUPALMEL_DB_URL -y
 
 test:
   override:
