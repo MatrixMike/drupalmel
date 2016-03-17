@@ -4,7 +4,7 @@ machine:
   environment:
     DRUPALMEL_PROFILE_NAME: drupalmel
     DRUPALMEL_PROFILE_PATH: $HOME/drupalmel
-    DRUPALMEL_MAKEFILE: $HOME/drupalmel/circle.make
+    DRUPALMEL_MAKEFILE: $HOME/drupalmel/local.make
     DRUPALMEL_BUILD_PATH: $HOME/drupalmel_build
     DRUPALMEL_DB_URL: mysql://ubuntu@127.0.0.1:3306/circle_test
 
@@ -21,10 +21,9 @@ dependencies:
     # start the web server
     - 'php app/console server:run --env=test -vvv localhost:8080 > server.log 2>&1':
           background: true
-  override:
     - composer global require drush/drush:8.*
+  override:
     - cd $(dirname $DRUPALMEL_MAKEFILE) && drush make $DRUPALMEL_MAKEFILE $DRUPALMEL_BUILD_PATH
-    - ln -s $DRUPALMEL_PROFILE_PATH $DRUPALMEL_BUILD_PATH/profiles/$DRUPALMEL_PROFILE_NAME
 
 database:
   override:
