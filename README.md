@@ -1,6 +1,7 @@
 # DrupalMelbourne
 
 [![Build Status](https://travis-ci.org/drupalmel/drupalmel.svg?branch=master)](https://travis-ci.org/drupalmel/drupalmel)
+[![Build Status](https://circleci.com/gh/pendashteh/drupalmel/tree/feature/circle-ci.svg?style=shield)](https://circleci.com/gh/pendashteh/drupalmel)
 
 This is the Drupal install profile / makefile source for the [DrupalMelbourne](http://melbourne.drupal.org.au/)
 community website.
